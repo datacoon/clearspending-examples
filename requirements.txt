@@ -1,0 +1,3 @@
+Flask==0.10.1
+Unirest==1.1.6
+requests==2.2.0

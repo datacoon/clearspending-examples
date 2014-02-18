@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="/static/javascripts/googleDrawChart.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script type="text/javascript" src="//www.google.com/jsapi"></script>
+
+<h2>Сумма средств выделенная на 5 регион, с ранжированием по типу контакта</h2>
+<div id="visualization" style="width: 900px; height: 900px;">
+    <img src="/static/img/loading.gif"/>
+</div>
+
+<script type="text/javascript"> google.load('visualization', '1', {packages: ['corechart']});</script>
+<script>
+    $.ajax({
+            url: "http://localhost:5000/dict/placing/",
+            type: "POST",
+            dataType: "json",
+            success: function( resp ){
+                drawVisualization(resp);
+            }
+        })
+</script>
+
+{% endblock %}
